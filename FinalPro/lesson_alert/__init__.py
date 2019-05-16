@@ -1,0 +1,1 @@
+default_app_config = 'lesson_alert.apps.LessonAlertConfig'
