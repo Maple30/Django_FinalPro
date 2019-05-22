@@ -3,12 +3,11 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from django.contrib.auth.models import User
-
-from .forms import UserCreationForm
+from django.contrib.auth.decorators import permission_required, login_required
+from .forms import UserCreationForm, LessonsForm
+from django.contrib import messages
 
 # Create your views here.
-
-
 def index(request):
     return render(request,'base.html', {})
 
@@ -17,5 +16,19 @@ class UserCreate(generic.CreateView):
     form_class = UserCreationForm
 
     def get_success_url(self):
-        # messages.success(self.request, '帳戶已創立')
+        messages.success(self.request, '帳戶已創立')
         return reverse('login')
+
+@login_required
+def add_lesson(request):
+    if request.method == "POST":
+        form = LessonsForm(request.POST)
+        if form.is_valid():
+            lesson = form.save(commit=False)
+            lesson.User = request.user
+            lesson.save()
+            messages.success(request, '課程已新增')
+            return redirect('index')
+    else:
+        form = LessonsForm()
+    return render(request, 'forms.html', {'form': form})
