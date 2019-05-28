@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import permission_required, login_required
 from .forms import UserCreationForm, LessonsForm
 from django.contrib import messages
+from lesson_alert.models import Category
+from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
@@ -22,6 +24,7 @@ class UserCreate(generic.CreateView):
 @login_required
 def add_lesson(request):
     if request.method == "POST":
+        
         form = LessonsForm(request.POST)
         if form.is_valid():
             lesson = form.save(commit=False)
@@ -32,3 +35,14 @@ def add_lesson(request):
     else:
         form = LessonsForm()
     return render(request, 'forms.html', {'form': form})
+@login_required
+def lesson_list(request):
+    List = Category.objects.filter(User__username='maple30')
+    print(request.user)
+    y = []
+    for i in List:
+        y.append(i.Name)
+    return HttpResponse(str(request.user))
+    
+    
+     
