@@ -37,12 +37,10 @@ def add_lesson(request):
     return render(request, 'forms.html', {'form': form})
 @login_required
 def lesson_list(request):
-    List = Category.objects.filter(User__username='maple30')
+    List = Category.objects.filter(User__username=request.user)
+    User = request.user
     print(request.user)
-    y = []
-    for i in List:
-        y.append(i.Name)
-    return HttpResponse(str(request.user))
+    return render(request,'lesson_list.html',locals())
     
     
      
