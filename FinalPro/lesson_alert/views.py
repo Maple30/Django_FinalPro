@@ -8,6 +8,7 @@ from .forms import UserCreationForm, LessonsForm
 from django.contrib import messages
 from lesson_alert.models import Category
 from django.http import HttpResponse
+from django.contrib.auth.views import auth_logout
 
 # Create your views here.
 def index(request):
@@ -41,6 +42,9 @@ def lesson_list(request):
     User = request.user
     print(request.user)
     return render(request,'lesson_list.html',locals())
+# def loged_out(request):
+#     logout(request)
+#     return redirect('/logout')
     
     
      
