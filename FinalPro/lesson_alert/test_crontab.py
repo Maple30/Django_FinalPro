@@ -1,6 +1,3 @@
-from django.test import TestCase
-
-# Create your tests here.
 import random
 
 from django.core.cache import cache
