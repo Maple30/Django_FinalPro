@@ -1,5 +1,434 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
+{% load outsidefunctions%}
 {% block content %}
-<h1>{{User}}的修課清單 = {% for Object in List %} {{Object.Name}} {% endfor %}</h1>
+<style>
+td,th{
+    width: 150px;
+    border :1px groove black;
+    text-align: center;
+    font-family:  "微軟正黑體", Sans-serif, Monospace;
+}
+table{
+    width: 1000px;
+    height: 500px;
+    border-collapse: collapse;
+    background-image: url(../images/fcu-logo.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+.HeaderRow{
+    background-color: gray;
+    color: white;
+}
+caption{
+    font-size: 2em;
+}
+td.Assigned{
+    background-color: linen;
+}
+td#WEB{
+    background-color: linen;
+    font-weight: bold;
+}
+</style>
+{% with flag=0 flag_c=0%}
+<table>
+        <tr class = "HeaderRow">
+            <th></th>
+            <th>星期一</th>
+            <th>星期二</th>
+            <th>星期三</th>
+            <th>星期四</th>
+            <th>星期五</th>
+            <th>星期六</th>
+            <th>星期日</th>
+        </tr>
+        <tr>
+            <td>8:10~9:00</td>
+            
+            {% for day in days %}
+                {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第一節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第一節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第一節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第一節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第一節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第一節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第一節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>9:10~10:00</td>
+            {% for day in days %}
+            {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第二節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第二節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第二節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第二節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第二節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第二節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第二節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>10:10~11:00</td>
+            {% for day in days %}
+            {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第三節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第三節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第三節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第三節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第三節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第三節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第三節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>11:10~12:00</td>
+            {% for day in days %}
+            {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第四節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第四節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第四節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第四節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第四節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第四節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第四節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>13:10~14:00</td>
+            {% for day in days %}
+            {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第五節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第五節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第五節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第五節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第五節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第五節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第五節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>14:10~15:00</td>
+            {% for day in days %}
+            {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第六節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第六節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第六節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第六節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第六節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第六節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第六節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>15:10~16:00</td>
+            {% for day in days %}
+            {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第七節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第七節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第七節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第七節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第七節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第七節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第七節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>16:10~17:00</td>
+            {% for day in days %}
+            {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第八節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第八節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第八節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第八節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第八節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第八節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第八節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>17:10~18:00</td>
+            {% for day in days %}
+            {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第九節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第九節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第九節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第九節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第九節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第九節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第九節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>18:10~19:00</td>
+            {% for day in days %}
+            {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第十節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第十節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第十節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第十節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第十節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第十節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第十節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>19:10~20:00</td>
+            {% for day in days %}
+            {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第十一節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第十一節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第十一節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第十一節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第十一節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第十一節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第十一節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>20:10~21:00</td>
+            {% for day in days %}
+            {% lessonchange 0 as flag %}
+                {% for lesson in List %}
+                    {% if lesson.Week == '星期一' and lesson.Lesson == '第十二節' and day == 1 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期二' and lesson.Lesson == '第十二節' and day == 2 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td>
+                    {% lessonchange 1 as flag %} 
+                    {% elif lesson.Week == '星期三' and lesson.Lesson == '第十二節' and day == 3 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期四' and lesson.Lesson == '第十二節' and day == 4 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期五' and lesson.Lesson == '第十二節' and day == 5 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期六' and lesson.Lesson == '第十二節' and day == 6 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif lesson.Week == '星期日' and lesson.Lesson == '第十二節' and day == 7 and flag == 0%} 
+                    <td class="Assigned">{{lesson.Name}}</td> 
+                    {% lessonchange 1 as flag %}
+                    {% elif forloop.last == True and flag == 0%}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tr>
+    </table>
+{% endwith %}
 {% endblock %}

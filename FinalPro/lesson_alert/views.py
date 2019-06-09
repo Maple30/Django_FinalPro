@@ -40,11 +40,18 @@ def add_lesson(request):
 def lesson_list(request):
     List = Category.objects.filter(User__username=request.user)
     User = request.user
+    days = [1,2,3,4,5,6,7]
+    # flag = 0
+    # def LessonAdded():
+    #     flag = 1
+    # def LessonNotAdded():
+    #     flag = 0
     print(request.user)
+    for i in List:
+        print(i.Lesson)
+        print(i.Week)
     return render(request,'lesson_list.html',locals())
 # def loged_out(request):
 #     logout(request)
 #     return redirect('/logout')
-    
-    
      
