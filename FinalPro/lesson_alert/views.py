@@ -9,10 +9,11 @@ from django.contrib import messages
 from lesson_alert.models import Category
 from django.http import HttpResponse
 from django.contrib.auth.views import auth_logout
-
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
+    messages.add_message(request, messages.INFO, '需要註冊才能使用喔')
     return render(request,'base.html', {})
 
 class UserCreate(generic.CreateView):

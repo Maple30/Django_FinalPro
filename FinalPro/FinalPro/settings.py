@@ -127,12 +127,12 @@ LOGIN_REDIRECT_URL = '/'
 
 # 运行定时函数
 CRONJOBS = [
-    ('*/1 * * * *', 'lesson_alert.test_crontab.test','>>/home/python/test_crontab.log')
+    ('*/1 * * * *', 'lesson_alert.test_crontab.test')
 ]
 # 运行定时命令
-CRONJOBS = [
-    ('*/1 * * * *', 'django.core.management.call_command', ['test'], {}, '>> /home/python/test.log'),
-]
+# CRONJOBS = [
+#     ('*/1 * * * *', 'django.core.management.call_command', ['test'], {}, '>> /home/python/test.log'),
+# ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
