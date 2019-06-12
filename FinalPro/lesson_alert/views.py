@@ -43,7 +43,6 @@ def add_lesson(request):
 @login_required
 def lesson_list(request):
     List = Category.objects.filter(User__username=request.user)
-    print(request.user)
     User = request.user
     days = [1,2,3,4,5,6,7]
     # flag = 0
@@ -51,9 +50,12 @@ def lesson_list(request):
     #     flag = 1
     # def LessonNotAdded():
     #     flag = 0
-    print(User)
-    print(datetime.datetime.today().strftime('%A'))
+    List = Category.objects.filter(Lesson='第一節')
+    print(List)
+    day = datetime.datetime.today().strftime('%A')
+    print(day)
     print(datetime.datetime.now().strftime('%H:%M'))
+    send_mail('Subject here', 'Here is the message.', 'toolsdesu@gmail.com', ['kp3344567@gmail.com'], fail_silently=False)
     return render(request,'lesson_list.html',locals())
 # def loged_out(request):
 #     logout(request)

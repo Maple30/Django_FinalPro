@@ -31,6 +31,12 @@
             background-color: #111;
         }
         </style>
+        </head>
+        {% endblock %}
+    </head>
+    <body>
+        <div>
+
         <ul>
             <li><a href="/">首頁</a></li>
             <li><a href="/lesson_list">我的課表</a></li>
@@ -42,13 +48,16 @@
             {% if user.is_authenticated%}
             <li><a href="/logout/">登出</a></li>
             {% endif %}
-            
+            {% if not user.is_authenticated %}
+            <li><a href="{% url 'password_reset' %}">忘記密碼</a></li>
+            {% endif %}
         </ul>
-        </head>
-        {% endblock %}
-    </head>
-    <body>
-        <div class="container">
+
+    </div>
+    <br>
+    <br>
+    <br>
+        <div class="container" >
             {% block content %}
                 
             {% endblock %}
