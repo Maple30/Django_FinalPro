@@ -10,6 +10,9 @@ from lesson_alert.models import Category
 from django.http import HttpResponse
 from django.contrib.auth.views import auth_logout
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.conf import settings
+import datetime
 
 # Create your views here.
 def index(request):
@@ -48,10 +51,7 @@ def lesson_list(request):
     #     flag = 1
     # def LessonNotAdded():
     #     flag = 0
-    print(request.user)
-    for i in List:
-        print(i.Lesson)
-        print(i.Week)
+    print(datetime.datetime.now())
     return render(request,'lesson_list.html',locals())
 # def loged_out(request):
 #     logout(request)
