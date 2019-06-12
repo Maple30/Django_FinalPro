@@ -9,7 +9,6 @@ from django.contrib import messages
 from lesson_alert.models import Category
 from django.http import HttpResponse
 from django.contrib.auth.views import auth_logout
-from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 import datetime
@@ -51,7 +50,12 @@ def lesson_list(request):
     #     flag = 1
     # def LessonNotAdded():
     #     flag = 0
-    print(datetime.datetime.now())
+    List = Category.objects.filter(Lesson='第一節')
+    print(List)
+    day = datetime.datetime.today().strftime('%A')
+    print(day)
+    print(datetime.datetime.now().strftime('%H:%M'))
+    send_mail('Subject here', 'Here is the message.', 'toolsdesu@gmail.com', ['kp3344567@gmail.com'], fail_silently=False)
     return render(request,'lesson_list.html',locals())
 # def loged_out(request):
 #     logout(request)
