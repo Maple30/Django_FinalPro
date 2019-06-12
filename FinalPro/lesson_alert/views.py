@@ -56,7 +56,6 @@ def lesson_list(request):
     #     flag = 1
     # def LessonNotAdded():
     #     flag = 0
-    List = Category.objects.filter(Lesson='第一節')
     print(List)
     day = datetime.datetime.today().strftime('%A')
     print(day)
