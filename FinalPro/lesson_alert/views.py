@@ -16,7 +16,9 @@ import datetime
 # Create your views here.
 def index(request):
     messages.add_message(request, messages.INFO, '需要註冊才能使用喔')
-    return render(request,'base.html', {})
+    User = request.user 
+    print(request.user,'111')
+    return render(request,'base.html', locals())
 
 class UserCreate(generic.CreateView):
     model = User
