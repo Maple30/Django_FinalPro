@@ -25,7 +25,7 @@ SECRET_KEY = 'qk(!coe6p($dkx7_wg2x9jde9(tgxz-vmdi7)h^6kn710gt#n4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.80.95.180','alert.iecs.pw']
+ALLOWED_HOSTS = ['127.0.0.1','34.80.95.180','alert.iecs.pw']
 
 
 # Application definition
