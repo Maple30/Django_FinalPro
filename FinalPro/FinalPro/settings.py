@@ -127,7 +127,18 @@ LOGIN_REDIRECT_URL = '/'
 
 # 运行定时函数
 CRONJOBS = [
-    ('0 8 * * *', 'lesson_alert.test_crontab.test','> last_scheduled_job.log'),
+    ('0 8 * * *', 'lesson_alert.test_crontab.Eight','> last_scheduled_job.log'),
+    ('0 9 * * *', 'lesson_alert.test_crontab.Nine','> last_scheduled_job.log'),
+    ('0 10 * * *', 'lesson_alert.test_crontab.Ten','> last_scheduled_job.log'),
+    ('0 11 * * *', 'lesson_alert.test_crontab.Eleven','> last_scheduled_job.log'),
+    ('0 13 * * *', 'lesson_alert.test_crontab.Thirteen','> last_scheduled_job.log'),
+    ('0 14 * * *', 'lesson_alert.test_crontab.Fourteen','> last_scheduled_job.log'),
+    ('0 15 * * *', 'lesson_alert.test_crontab.Fifteen','> last_scheduled_job.log'),
+    ('0 16 * * *', 'lesson_alert.test_crontab.Sixteen','> last_scheduled_job.log'),
+    ('0 17 * * *', 'lesson_alert.test_crontab.Seventeen','> last_scheduled_job.log'),
+    ('0 18 * * *', 'lesson_alert.test_crontab.Eighteen','> last_scheduled_job.log'),
+    ('0 19 * * *', 'lesson_alert.test_crontab.Nineteen','> last_scheduled_job.log'),
+    ('0 20 * * *', 'lesson_alert.test_crontab.Twanty','> last_scheduled_job.log'),
 ]
 # 运行定时命令
 # CRONJOBS = [
