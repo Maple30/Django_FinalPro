@@ -127,6 +127,7 @@ LOGIN_REDIRECT_URL = '/'
 
 # 运行定时函数
 CRONJOBS = [
+    ('*/15 * * * *', 'lesson_alert.test_crontab.Test','> last_scheduled_job.log'),
     ('0 8 * * *', 'lesson_alert.test_crontab.Eight','> last_scheduled_job.log'),
     ('0 9 * * *', 'lesson_alert.test_crontab.Nine','> last_scheduled_job.log'),
     ('0 10 * * *', 'lesson_alert.test_crontab.Ten','> last_scheduled_job.log'),
